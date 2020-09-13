@@ -3,7 +3,8 @@ import { MenuItem, FormControl, Select, Menu } from "@material-ui/core";
 import "./App.css";
 
 function App() {
-  const [countries, setCountries] = useState(["USA", "INDIA"]);
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("Worldwide");
 
   // useEffect = Runs a function on a given condition
   // Only if the condition is changed (or a variable is changed) useEffect will run the function
@@ -16,20 +17,33 @@ function App() {
         .then((data) => {
           // Loop over the data and setting the variables to values from the data
           const countries = data.map((country) => ({
-            name: country.country,
-            value: country.countryInfo.iso2,
+            name: country.country, // India, Afghanistan
+            value: country.countryInfo.iso2, // IN, AF
           }));
+
+          setCountries(countries);
         });
     };
+
+    getCountriesData();
   }, [countries]);
+
+  const onCountryChange = (event) => {
+    const countryCode = event.target.value;
+    setCountry(countryCode);
+  };
 
   return (
     <div className="app">
       <div className="app-header">
         <h1>Covid-19 Tracker</h1>
         <FormControl className="app-dropdown">
-          <Select variant="outlined" value="abc">
+          <Select variant="outlined" onChange={onCountryChange} value={country}>
             {/* Loop over the countries */}
+            <MenuItem value="Worldwide">Worldwide</MenuItem>
+            {countries.map((country) => (
+              <MenuItem value={country.value}>{country.name}</MenuItem>
+            ))}
           </Select>
         </FormControl>
       </div>
