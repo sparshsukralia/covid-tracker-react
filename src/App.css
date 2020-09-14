@@ -4,6 +4,12 @@
 
 body {
   overflow-x: hidden;
+  background-color: #f5f6fa;
+}
+
+.app {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .app-header {
@@ -15,4 +21,5 @@ body {
 
 .app-stats {
   display: flex;
+  justify-content: space-between;
 }
