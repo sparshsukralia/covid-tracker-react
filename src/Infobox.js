@@ -3,12 +3,21 @@ import { Card, Typography, CardContent } from "@material-ui/core";
 
 function Infobox({ title, cases, total }) {
   return (
-    <Card>
-      {/* title */}
+    <Card className="infobox">
+      <CardContent>
+        {/* title */}
+        <Typography className="infobox-title" color="textSecondary">
+          {title}
+        </Typography>
 
-      {/* Number of Cases */}
+        {/* Number of Cases */}
+        <h2 className="infobox-cases">{cases}</h2>
 
-      {/* Total */}
+        {/* Total */}
+        <Typography className="infobox-total" color="textSecondary">
+          {total} Total
+        </Typography>
+      </CardContent>
     </Card>
   );
 }
