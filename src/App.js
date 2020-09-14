@@ -20,11 +20,9 @@ function App() {
             name: country.country, // India, Afghanistan
             value: country.countryInfo.iso2, // IN, AF
           }));
-
           setCountries(countries);
         });
     };
-
     getCountriesData();
   }, [countries]);
 
@@ -38,6 +36,7 @@ function App() {
       <div className="app-header">
         <h1>Covid-19 Tracker</h1>
         <FormControl className="app-dropdown">
+          {/* Set the default value as country and on change of an event set the country as the country selected */}
           <Select variant="outlined" onChange={onCountryChange} value={country}>
             {/* Loop over the countries */}
             <MenuItem value="Worldwide">Worldwide</MenuItem>
