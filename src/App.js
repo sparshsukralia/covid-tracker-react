@@ -8,12 +8,23 @@ import {
 } from "@material-ui/core";
 import Infobox from "./Infobox";
 import Map from "./Map";
+import Table from "./Table";
 import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+
+  // Empty array means the callback function runs on page load
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
 
   // useEffect = Runs a function on a given condition
   // Only if the condition is changed (or a variable is changed) useEffect will run the function
@@ -29,11 +40,12 @@ function App() {
             name: country.country, // India, Afghanistan
             value: country.countryInfo.iso2, // IN, AF
           }));
+          setTableData(data);
           setCountries(countries);
         });
     };
     getCountriesData();
-  }, [countries]);
+  }, []);
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -101,6 +113,7 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           {/* Table */}
+          <Table countries={tableData} />
           <h3>Worldwide new Cases</h3>
           {/* Graph */}
         </CardContent>
