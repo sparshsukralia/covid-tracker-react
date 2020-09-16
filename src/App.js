@@ -10,6 +10,7 @@ import Infobox from "./Infobox";
 import Map from "./Map";
 import Table from "./Table";
 import "./App.css";
+import { sortData } from "./util";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -40,7 +41,9 @@ function App() {
             name: country.country, // India, Afghanistan
             value: country.countryInfo.iso2, // IN, AF
           }));
-          setTableData(data);
+
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
