@@ -84,7 +84,7 @@ function App() {
     <div className="app">
       <div className="app-left">
         <div className="app-header">
-          <h1>Covid-19 Tracker</h1>
+          <h1>COVID-19 TRACKER</h1>
           <FormControl className="app-dropdown">
             {/* Set the default value as country and on change of an event set the country as the country selected */}
             <Select
@@ -103,6 +103,8 @@ function App() {
 
         <div className="app-stats">
           <Infobox
+            isRed
+            active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             title="Coronavirus Cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
@@ -110,6 +112,7 @@ function App() {
           />
 
           <Infobox
+            active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
@@ -117,6 +120,8 @@ function App() {
           />
 
           <Infobox
+            isRed
+            active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
@@ -138,7 +143,7 @@ function App() {
           <Table countries={tableData} />
           <h3>Worldwide new {casesType}</h3>
           {/* Graph */}
-          <LineGraph casesType={casesType} />
+          <LineGraph className="app-graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>
