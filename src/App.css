@@ -30,6 +30,8 @@ body {
 
 .app-graphTitle {
   margin-top: 10px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
 }
 
 .app-graph {
@@ -55,6 +57,10 @@ body {
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
+  }
+
+  .app-right {
+    margin-top: 20px;
   }
 }
 
