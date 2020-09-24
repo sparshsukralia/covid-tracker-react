@@ -28,6 +28,10 @@ body {
   flex-grow: 1;
 }
 
+.app-graphTitle {
+  margin-top: 10px;
+}
+
 .app-graph {
   flex-grow: 1;
 }
@@ -51,5 +55,17 @@ body {
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .app-header h1 {
+    font-size: 1.2rem;
   }
 }

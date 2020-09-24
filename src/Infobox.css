@@ -32,3 +32,14 @@
   font-size: 0.8rem !important;
   margin-top: 10px !important;
 }
+
+@media (max-width: 480px) {
+  .infobox h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .infobox-title {
+    text-align: center;
+  }
+}

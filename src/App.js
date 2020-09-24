@@ -106,7 +106,7 @@ function App() {
             isRed
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
-            title="Coronavirus Cases"
+            title="Cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
           />
@@ -141,9 +141,13 @@ function App() {
           <h3>Live Cases by Country</h3>
           {/* Table */}
           <Table countries={tableData} />
-          <h3>Worldwide new {casesType}</h3>
+          <h3 className="app-graphTitle">Worldwide new {casesType}</h3>
           {/* Graph */}
-          <LineGraph className="app-graph" casesType={casesType} />
+          <LineGraph
+            className="app-graph"
+            casesType={casesType}
+            active={casesType === "recovered"}
+          />
         </CardContent>
       </Card>
     </div>
